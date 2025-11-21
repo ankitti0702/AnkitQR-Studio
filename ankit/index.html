@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>⭐AnkitQR Studio </title>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="design.css" />
+</head>
+<body>
+
+  <!-- Dark/Light Mode -->
+  <input type="checkbox" id="modeSwitch" />
+  <label for="modeSwitch" class="switch-label">
+    <div class="day"></div>
+    <div class="night"></div>
+  </label>
+  <!-- Header -->
+  <header>
+    <h1>⭐AnkitQR Studio</h1>
+    <nav>
+      <a href="#" onclick="showSection('home')">Home</a>
+      <a href="#" onclick="showSection('history')">History</a>
+      <a href="#" onclick="showSection('scanner')">Scanner</a>
+      <a href="#" onclick="showSection('analytics')">Analytics</a>
+      <a href="#" onclick="showSection('login')">Login</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero">
+    <h2>Create, Scan & Track QR Codes Easily</h2>
+    <p>Smart, Secure and Stylish QR Code Generator App</p>
+  </section>
+
+  <main>
+    <!-- Home -->
+    <section id="homeSection" class="container">
+      <h2>Generate Your QR Code With ⭐AnkitQR Studio</h2>
+      <input type="text" id="qrData" placeholder="Enter text or URL" />
+      <input type="color" id="qrColor" value="#000000" />
+      <input type="color" id="qrBgColor" value="#ffffff" />
+      <input type="number" id="qrSize" value="200" min="100" max="400" />
+      <button onclick="generateQR()">Generate QR</button>
+      <div id="qrcode"></div>
+      <div id="qrActions" style="display:none;">
+        <button onclick="downloadQR()">Download</button>
+        <button onclick="saveHistory()">Save</button>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section id="historySection" class="container hidden">
+      <h2>QR History</h2>
+      <div id="historyList"></div>
+      <button onclick="clearHistory()">Clear History</button>
+    </section>
+
+    <!-- Scanner -->
+    <section id="scannerSection" class="container hidden">
+      <h2>Scan QR Code</h2>
+      <video id="scannerVideo" autoplay playsinline></video>
+      <canvas id="scannerCanvas" style="display:none;"></canvas>
+      <div class="scan-buttons">
+        <button onclick="startScanner()">Start</button>
+        <button onclick="stopScanner()">Stop</button>
+      </div>
+      <div id="scanResult"></div>
+    </section>
+
+    <!-- Analytics -->
+    <section id="analyticsSection" class="container hidden">
+      <h2>QR Analytics</h2>
+      <canvas id="qrChart"></canvas>
+    </section>
+
+    <!-- Login -->
+    <section id="loginSection" class="container hidden">
+      <h2>Login / Signup</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+      <button onclick="signup()">Signup</button>
+      <p id="authMsg"></p>
+    </section>
+  </main>
+
+ <footer class="footer">
+    <div class="footer-container">
+   <div class="footer-section">
+            <h3>AnkitQR Studio</h3>
+            <p>A simple, secure and stylish QR Code Generator & Scanner</p>
+        </div>
+        <div class="footer-section">
+            <h4>Developer</h4>
+            <p>Ankit Kumar Tiwari</p>
+           <p><a href="https://github.com/ankitti0702" target="_blank">GitHub</a></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 AnkitQR Studio | Developed by Ankit. All Rights Reserved.
+    </div>
+</footer>
+  
+
+  <script src="app.js"></script>
+</body>
+</html>
